@@ -1,0 +1,40 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8325
+spring:
+  application:
+    name: user-mysql-mybatis  #全部小写
+
+
+#####################################################################################################
+# mysql 属性配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mydata?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: Yw11051217
+    type: com.alibaba.druid.pool.DruidDataSource
+#  jpa:
+#    hibernate:
+#      #ddl-auto: create #ddl-auto:设为create表示每次都重新建表
+#      ddl-auto: update #ddl-auto:设为update表示每次都不会重新建表
+#    show-sql: true
+#####################################################################################################
+
+mybatis:
+  mapper-locations: classpath*:sqlmap/*Mapper.xml
+  type-aliases-package: 
+  config-location: classpath:mybatis/mybatis-config.xml
+#####################################################################################################
+# 打印日志
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.springms: DEBUG
+#####################################################################################################

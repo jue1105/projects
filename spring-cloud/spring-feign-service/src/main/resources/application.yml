@@ -1,0 +1,13 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8765
+spring:
+  application:
+    name: service-feign
+# 高版本的SpringCloud 移除了这个配置
+#feign:
+#  hystrix:
+#    enabled: true

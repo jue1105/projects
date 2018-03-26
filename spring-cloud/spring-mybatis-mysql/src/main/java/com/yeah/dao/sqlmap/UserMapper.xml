@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yeah.dao.interf.IUserDao" >
+	<!-- 根据ID获取用户信息 -->
+	<select id="getModel" parameterType="com.yeah.dao.entity.UserModel" resultType="com.yeah.dao.entity.UserModel">
+		select * from users where id=#{id,jdbcType=INTEGER}
+	</select>
+	<!-- 根据ID获取用户信息 -->
+	<select id="getModelByid" parameterType="java.lang.Integer"" resultType="com.yeah.dao.entity.UserModel">
+		select * from users where id=#{id,jdbcType=INTEGER}
+	</select>
+	<!-- 新增用户信息 -->
+	<insert id="insertUser" parameterType="com.yeah.dao.entity.UserModel">
+		INSERT INTO users (`name`, `age`, `gender`) VALUES (#{name,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR})
+	</insert>
+	<!-- 更新用户信息 -->
+	<update id="updateUser" parameterType="com.yeah.dao.entity.UserModel">
+		UPDATE users SET name=#{name,jdbcType=VARCHAR},age=#{age,jdbcType=VARCHAR},gender=#{gender,jdbcType=VARCHAR} WHERE id=#{id,jdbcType=INTEGER}
+	</update>
+	<!-- 根据ID删除用户 -->
+	<delete id="deleteUserByid" parameterType="java.lang.Integer">
+		delete from users where id=#{id,jdbcType=INTEGER}
+	</delete>
+	<!-- 根据ID批量删除用户 -->
+	<delete id="deleteBatchUserByid">
+		delete from users where id in 
+		<foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+</mapper>
